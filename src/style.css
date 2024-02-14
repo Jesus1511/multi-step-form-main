@@ -1,0 +1,449 @@
+:root{
+    --font :'Ubuntu', sans-serif;
+    --Marine-blue: hsl(213, 96%, 18%);
+    --Cool-gray: hsl(231, 11%, 63%);
+}
+
+*{
+    font-family: var(--font);
+    box-sizing: border-box;
+}
+
+.sideBar{
+    width: 100vw;
+    height: 45vw;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-image: url('./assets/bg-sidebar-mobile.svg');
+}
+
+html{
+    background-color: aliceblue;
+
+}
+
+nav{
+    display: flex;
+    width: 359.33px;
+    justify-content: space-around;
+    margin-top: 35px;
+    padding: 0 55px;
+}
+
+.sideBarContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.sectionIndex{
+    color: aliceblue;
+    border: aliceblue solid 1.4px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 50%;
+}
+
+.indexFocus{
+    background-color: aliceblue;
+    color: rgb(0, 15, 39);
+}
+
+.main{
+    width: 341.9px;
+    display: block;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    margin-top: 30px;
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin-bottom: 150px;
+}
+
+footer{
+    background-color: white;
+    position: relative;
+    top: 10px;
+    right: 10px;
+    width: 110%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nextButton{
+    background-color: var(--Marine-blue);
+    color: aliceblue;
+    border: none;
+    width: 85px;
+    height: 35px;
+    border-radius: 10px;
+    position: relative;
+    right: 10vw;
+    cursor: pointer;
+}
+
+.backButton{
+    width: 85px;
+    height: 35px;
+    color: var(--Cool-gray);
+    border: none;
+    background-color: transparent;
+}
+
+.buttonAlone{
+    position: absolute;
+    right: 10vw;
+}
+
+h1{
+    color: var(--Marine-blue);
+    font-size: 25px;
+}
+
+p{
+    color: var(--Cool-gray);
+}
+
+label{
+    color: var(--Marine-blue);
+}
+
+input{
+    display: block;
+    height: 35px;
+    width: 100%;
+    padding: 10px;
+    margin: 2px 0px 20px;
+    color: var(--Cool-gray);
+    border-radius: 5px;
+    border: var(--Cool-gray) solid 0.5px;
+}
+
+.plan{
+    cursor: pointer;
+    border-radius: 15px;
+    height: 100px;
+    display: grid;
+    padding: 20px 18px ;
+    grid-template-columns: 1fr 5fr ;
+    grid-template-rows: 1fr;
+    border: solid .1px rgba(0, 0, 0, 0.278);
+    margin: 10px 0px;
+}
+
+.plan:hover{
+    border: hsl(213, 77%, 33%) solid ;
+}
+
+.selectedPlan{
+    border: hsl(213, 77%, 33%) solid ;
+}
+
+.text_content h2{
+    margin: 0;
+    color: var(--Marine-blue);
+    font-size: 16px;
+    user-select: none;
+}
+
+.text_content p{
+    margin: 5px 0px;
+    user-select: none;
+}
+
+.yearlyOffer{
+    color: var(--Marine-blue);
+    font-size: 15px;
+}
+
+.plan_img{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+
+.ArcadePlan_img{
+    background-image: url("./assets/icon-arcade.svg");
+}
+
+.AdvancedPlan_img{
+    background-image: url("./assets/icon-advanced.svg");
+}
+
+.ProPlan_img{
+    background-image: url("./assets/icon-pro.svg");
+}
+
+
+.mo_yr{
+    background-color: aliceblue;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mo_yr .focus{
+    color: var(--Marine-blue);
+}
+
+.mo_yr p{
+    font-weight: 500;
+}
+
+.botonSwitch{
+    background-color: var(--Marine-blue);
+    width: 40px;
+    border-radius: 10px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0px 3px;
+}
+
+.handleSwitchOn{
+    width: 15px;
+    background-color: white;
+    border-radius: 50%;
+    height: 15px;
+    transition: .3s;
+}
+ .handleSwitchOff{
+    width: 15px;
+    background-color: white;
+    border-radius: 50%;
+    height: 15px;
+    transition: .3s;
+    transform: translate(18px, 0px);
+ }
+
+ .add-ons{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px 12px ;
+    margin: 10px 0px;
+    border: solid .1px rgba(0, 0, 0, 0.278);
+ }
+
+ .active {
+    border: hsl(213, 77%, 33%) solid ;
+ }
+
+ .add-ons h2{
+    margin: 0;
+    font-size: 15px;
+    margin-bottom: 5px;
+ }
+
+ .add-ons p{
+    margin: 0;
+    font-size: 12px;
+ }
+
+ .OS , .LS, .CP{
+    margin: 0;
+    width: 24px;
+ }
+
+ .buys{
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 10px;
+
+ }
+
+ .buys h2{
+    margin: 0;
+    font-size: 16px;
+    color: var(--Marine-blue);
+    font-weight: 500;
+ }
+
+ .buys p{
+    margin: 0%;
+ }
+
+ .hr{
+    margin-bottom: 15px;
+ }
+
+ .packete, .additivo{
+    margin: 0px 0px 15px;
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .additivo h2{
+    color: var(--Cool-gray);
+    font-weight: lighter;
+ }
+
+ .totalBuys{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .totalBuys p{
+    margin: 0;
+ }
+
+ .finalCost{
+    color: blue;
+    font-weight: 700;
+ }
+
+ .finalCheck{
+    background-image: url("./assets/icon-thank-you.svg");
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    margin-top: 50px;
+ }
+
+ .fiveMain{
+    padding: 20px;
+ }
+
+ .fMain h1{
+    display: block;
+    text-align: center;
+    margin: 25px auto;
+ }
+
+ .finalP{
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 50px;
+ }
+
+ .incomplete {
+    border: crimson solid 1.5px;
+ }
+
+ .fielRequired{
+    color: crimson;
+ }
+
+ .textoInOne{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 4px;
+
+ }
+
+ @media (min-width:800px)  {
+    .all{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 750px;
+        height: 470px;
+        border-radius: 20px;
+        display: flex;
+        background-color: white;
+        padding: 5px;
+    }
+
+    .sideBarContainer{
+        display: block;
+        width: 225px;
+        padding: 10px ;
+        border-radius: 10px;
+    }
+
+    .sideBar{
+        top: auto;
+        left: auto;
+        width: 225px;
+        height: 440px;
+        background-repeat: no-repeat;
+        position: absolute;
+        background-size: contain;
+        background-image: url('./assets/bg-sidebar-desktop.svg');
+    }
+    
+    nav{
+        display: flex;
+        flex-direction: column;
+        width: 40px;
+        height: 200px;
+        justify-content: space-around;
+        margin: 20px;
+        padding: 0px 0px;
+    }
+
+    .main{
+        display: block;
+        margin: 0;
+        padding: 10px 0px;
+        padding-left: 45px;
+        width: 64%;
+    }
+    
+    footer{
+        background-color: rgba(255, 0, 0, 0);
+        position: absolute;
+        top: auto;
+        right: 10px;
+        bottom: 0px;
+        right: 30px ;
+        width: 60%;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nextButton{
+        background-color: var(--Marine-blue);
+        position: static;
+    }
+    
+    .backButton{
+        width: 85px;
+        height: 35px;
+        color: var(--Cool-gray);
+        border: none;
+        background-color: transparent;
+    }
+    
+    .buttonAlone{
+        position: absolute;
+        right: 0px;
+    }
+    
+    .planes{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .plan{
+        height: 160px;
+        width: 138px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .yearlyOffer{
+        font-size: 15px;
+    }
+      }
