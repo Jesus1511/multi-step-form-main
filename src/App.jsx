@@ -83,7 +83,6 @@ export const App = () => {
   }
 
   function handleNext (){
-    alert(mustComplete)
     if(section == 1){
 
       if(value[0] !== "" && value[1] !== "" && value[2] !== "" ){
@@ -116,7 +115,6 @@ export const App = () => {
     setIsChecked(isCheck)
   }
 
-
   return (
     <div className='all'>
       <div className='sideBarContainer'>
@@ -132,7 +130,7 @@ export const App = () => {
     <div className={`main ${section == 5?"fiveMain":""}`}>
       {section === 1 && (
         <>
-          <SectionOne sendValues={handleValues} values={value} mustCompletes={mustComplete} />
+          <SectionOne sendValues={handleValues} values={value} mustComplete={mustComplete} />
         </>
       )}
 
