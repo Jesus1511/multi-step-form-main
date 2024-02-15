@@ -22,7 +22,7 @@ export const SectionOne = ({sendValues, values, mustComplete}) => {
     useEffect(()=>{
       sendValues([Name, email, number])
     },[Name, email, number])
-    
+
 
   return (
     <>
