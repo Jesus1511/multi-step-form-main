@@ -124,6 +124,7 @@ input{
     color: var(--Cool-gray);
     border-radius: 5px;
     border: var(--Cool-gray) solid 0.5px;
+    color: black;
 }
 
 .plan{

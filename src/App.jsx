@@ -2,16 +2,16 @@ import React from 'react'
 import './style.css'
 import { useState, useEffect } from 'react'
 import { SectionTwo } from './SectionTwo.jsx';
-import { SectionOne } from './SectionOne.jsx';
 import { SectionThree } from './SectionThree.jsx';
-import { Compra } from './Compras.jsx';
 import { SectionFive } from './SectionFive.jsx';
 
 export const App = () => {
 
   const [section, setSection] = useState(1)
 
-  const [value, setValue] = useState(["","",""])
+  const [Name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [number, setNumber] = useState("")
   const [mustComplete, setMustComplete] = useState([false,false,false])
 
   const [monthly, setMonthly] = useState(true)
@@ -19,8 +19,8 @@ export const App = () => {
 
   const [isChecked, setIsChecked] = useState([false, false, false])
 
-  const [pack, setPack] = useState(null)
-  const [addons, setAddons] = useState([])
+  const [pack, setPack] = useState([{name:"", cost:0}])
+  const [adds, setAddons] = useState([])
 
   function handleMonthly (monthlyy){
     setMonthly(monthlyy)
@@ -28,23 +28,49 @@ export const App = () => {
 
   function handleSPlan (SPlan){
     setSelectedPLan(SPlan)
-  }
+   }
 
-  useEffect(()=>{
-    if(isChecked[0]){
-      if(!addons.some(addon => addon.name === "online service")){
-        setAddons([...addons, {name: "online service", cost : 1}])
+  function handleInput (e){
+      if(e.target.id == "1"){
+        setName(e.target.value)
+      }
+      else if(e.target.id == "2"){
+        setEmail(e.target.value)
+      }
+      else if(e.target.id == "3"){
+        setNumber(e.target.value)
       }
     }
-    else if(isChecked[1]){
-      if(!addons.some(addon => addon.name === "larger storage")){
-        setAddons([...addons,{name : "larger storage", cost : 2}])
-    }}
-    else if(isChecked[2]){
-      if(!addons.some(addon => addon.name === "customizable profile")){
-        setAddons([...addons, {name : "customizable profile", cost : 2}])
-    }}
-  },[isChecked])
+
+  useEffect(() => {
+    let newAddons = [...adds]; // Copia del estado actual de addons
+  
+    if (isChecked[0]) {
+      if (!adds.some(addon => addon.name === "online service")) {
+        newAddons.push({ name: "online service", cost: 1 }); // Agregar nuevo addon
+      }
+    } else {
+      newAddons = newAddons.filter(addon => addon.name !== "online service"); // Filtrar addons
+    }
+  
+    if (isChecked[1]) {
+      if (!adds.some(addon => addon.name === "larger storage")) {
+        newAddons.push({ name: "larger storage", cost: 2 }); // Agregar nuevo addon
+      }
+    } else {
+      newAddons = newAddons.filter(addon => addon.name !== "larger storage"); // Filtrar addons
+    }
+  
+    if (isChecked[2]) {
+      if (!adds.some(addon => addon.name === "customizable profile")) {
+        newAddons.push({ name: "customizable profile", cost: 2 }); // Agregar nuevo addon
+      }
+    } else {
+      newAddons = newAddons.filter(addon => addon.name !== "customizable profile"); // Filtrar addons
+    }
+  
+    setAddons(newAddons); // Actualizar el estado de addons
+  }, [isChecked, section]);
 
   useEffect(()=>{
     if(selectedPlan[0]){
@@ -65,17 +91,17 @@ export const App = () => {
   }
 
   function handleValueEmpty (){
-    if(value[0] == ""){
+    if(Name == ""){
       newMustCompleteF(0,true)
     } else {
         newMustCompleteF(0,false)
     }
-    if(value[1] == ""){
+    if(email == ""){
       newMustCompleteF(1,true)
     } else {
         newMustCompleteF(1,false)
     }
-    if(value[2] == ""){
+    if(number == ""){
       newMustCompleteF(2,true)
     } else {
         newMustCompleteF(2,false)
@@ -85,7 +111,7 @@ export const App = () => {
   function handleNext (){
     if(section == 1){
 
-      if(value[0] !== "" && value[1] !== "" && value[2] !== "" ){
+      if(Name !== "" && email !== "" && number !== "" ){
         setSection(section+1)
       } else{
         handleValueEmpty()
@@ -115,6 +141,15 @@ export const App = () => {
     setIsChecked(isCheck)
   }
 
+  function handleCost (){
+    const packCost = parseInt(pack.cost);
+    const addsCost = adds.reduce((total, add) => total + parseInt(add.cost), 0);
+    return packCost + addsCost;
+  }
+
+  const totalCost = handleCost()
+
+
   return (
     <div className='all'>
       <div className='sideBarContainer'>
@@ -129,9 +164,44 @@ export const App = () => {
 
     <div className={`main ${section == 5?"fiveMain":""}`}>
       {section === 1 && (
-        <>
-          <SectionOne sendValues={handleValues} values={value} mustComplete={mustComplete} />
-        </>
+    <>
+    <main>
+          <h1>Personal Info</h1>
+          <p>Please provide your name, email address, and phone number.</p>
+
+          <form action="">
+            <div className='textoInOne'>
+              <label htmlFor="">Name</label>
+              {mustComplete[0] && (
+                <label className='fielRequired' htmlFor="">This field is required</label>
+              )}
+            </div>
+            <input id='1' className={mustComplete[0]?"incomplete":""} value={Name} onChange={handleInput} placeholder='e.g.Stephen King' type="text" />
+          </form>
+
+          <form action="">
+            <div className='textoInOne'>
+              <label htmlFor="">Email Address</label>
+              {mustComplete[1] && (
+                <label className='fielRequired' htmlFor="">This field is required</label>
+              )}
+            </div>
+            <input id='2' className={mustComplete[1]?"incomplete":""} value={email} onChange={handleInput} placeholder='e.g.stephenking@lorem.com' type="text" />
+          </form>
+          
+          <form action="">
+            <div className='textoInOne'>
+              <label htmlFor="">Phone Number</label>
+              {mustComplete[2] && (
+                <label className='fielRequired' htmlFor="">This field is required</label>
+              )}
+            </div>
+            <input id='3' className={mustComplete[2]?"incomplete":""}  value={number} onChange={handleInput} placeholder='e.g. +1 234 567 890' type="text" />
+          </form>
+        </main>
+
+        
+    </>
       )}
 
       {section === 2 && (
@@ -146,16 +216,37 @@ export const App = () => {
         </>
       ) }
 
-        {section === 4 && (
-          <>
-            <Compra pack={pack} adds={addons} monthly={monthly} />
+        {section === 4 && ( 
+           <>
+          <h1>Finishing up</h1>
+          <p>Double-check everything looks OK before confirming.</p>
+          <div id={pack.name} className='buys'>
+            <div className='packete'> 
+               <h2> {pack.name} {monthly?"(Monthly)":"(Yearly)"} </h2>
+               <p> ${monthly?pack.cost:pack.cost+"0"}/{monthly?"mo":"yr"} </p>
+            </div>
+
+            <hr className='hr' />
+
+            { 
+            adds.map((add)=>(
+              <div id={add.name} className='additivo'>
+                <h2> {add.name} </h2>
+                <p> ${monthly?add.cost:add.cost+"0"}/{monthly?"mo":"yr"} </p>
+              </div>
+            ))}
+          </div>
+            
+            <div className='totalBuys'>
+              <p>total {monthly?"(per month)":"(per year)"} </p>
+              <p className='finalCost'> +${monthly?totalCost:totalCost + "0"}/{monthly?"mo":"yr"} </p>
+            </div>
+            
           </>
         )}
 
         {section == 5 && (
-          <>
           <SectionFive />
-          </>
         ) }
     </div>
 
