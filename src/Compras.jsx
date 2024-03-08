@@ -1,8 +1,10 @@
 
-import React from 'react'
-
+import React, { useContext } from 'react'
+import { generalData } from './App';
 
 export const Compra = ({pack, adds, monthly}) => {
+
+  const {section, setSection} = useContext(generalData)
 
   function handleCost (){
     const packCost = parseInt(pack.cost);
@@ -36,6 +38,11 @@ export const Compra = ({pack, adds, monthly}) => {
           <p>total {monthly?"(per month)":"(per year)"} </p>
           <p className='finalCost'> +${monthly?totalCost:totalCost + "0"}/{monthly?"mo":"yr"} </p>
         </div>
+
+    <footer>
+        <button className="backButton" onClick={()=>{setSection(section - 1)}}>Go Back</button>
+        <button className="nextButton" onClick={()=>{setSection(section + 1)}}>Confirm</button>
+    </footer>
       
     </>
   )};

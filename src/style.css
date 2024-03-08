@@ -95,6 +95,7 @@ footer{
     color: var(--Cool-gray);
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .buttonAlone{

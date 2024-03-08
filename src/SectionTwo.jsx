@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect} from 'react'
+import { generalData } from './App'
 
 
 export const SectionTwo = ({sendMonthly, seplan , sendSPLan, monthlyy}) => {
+
+    const {section, setSection} = useContext(generalData)
 
   const [monthly, setMonthly] = useState(monthlyy)
   const [selectedPlan, setSelectedPLan] = useState(seplan)
@@ -45,6 +48,11 @@ export const SectionTwo = ({sendMonthly, seplan , sendSPLan, monthlyy}) => {
     sendMonthly(monthly)
   },[monthly])
 
+  function handleNext (){
+    if(selectedPlan[0] || selectedPlan[1] || selectedPlan[2]){
+        setSection(section +1)
+    }
+  }
 
   return (
     <>
@@ -94,6 +102,11 @@ export const SectionTwo = ({sendMonthly, seplan , sendSPLan, monthlyy}) => {
         </div>
         <p className={monthly?"":"focus"} >Yearly</p>
     </div>
+
+    <footer>
+        <button className="backButton" onClick={()=>{setSection(section - 1)}}>Go Back</button>
+        <button className="nextButton" onClick={handleNext}>Next Step</button>
+    </footer>
     </>
   )
 }

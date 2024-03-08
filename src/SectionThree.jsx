@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
+import { generalData } from './App'
 
 export const SectionThree = ({isCheckedApp, sendIsChecked, monthly}) => {
 
+    const {section, setSection} = useContext(generalData)
     const [isChecked, setIsChecked] = useState(isCheckedApp)
 
 
@@ -68,6 +70,11 @@ export const SectionThree = ({isCheckedApp, sendIsChecked, monthly}) => {
         </div>
         <p>{monthly?"+$2/mo":"+$20/yr"}</p>
     </div>
+
+    <footer>
+        <button className="backButton" onClick={()=>{setSection(section - 1)}}>Go Back</button>
+        <button className="nextButton" onClick={()=>{setSection(section + 1)}}>Next Step</button>
+    </footer>
     </>        
   )
 }
